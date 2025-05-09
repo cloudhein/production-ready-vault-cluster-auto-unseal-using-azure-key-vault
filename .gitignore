@@ -44,5 +44,6 @@ yarn-error.log*
 # package-lock.json
 # yarn.lock
 
-backend
-backend/*
+backend/terraform.tfvars 
+backend/terraform.tfstate
+backend/terraform.tfstate.backup
