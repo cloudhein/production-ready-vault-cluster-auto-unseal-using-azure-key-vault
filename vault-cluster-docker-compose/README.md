@@ -1,4 +1,4 @@
-## Configure environment varibles for integrating with AZ KV values  
+## Configure environment variables for integrating with AZ KV values  
 
 ### Please run this before your start your vault cluster with `docker compose up` 
 
