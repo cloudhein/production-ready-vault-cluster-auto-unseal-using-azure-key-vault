@@ -47,3 +47,5 @@ yarn-error.log*
 backend/terraform.tfvars 
 backend/terraform.tfstate
 backend/terraform.tfstate.backup
+
+vault-cluster-docker-compose/unseal-script/unseal-output.txt
