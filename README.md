@@ -1,3 +1,9 @@
-## Vault Cluster Auto Unseal with Azure Key Vault LLD Diagram
+#  Vault Cluster Auto Unseal on K8s with AZ Key Vault
 
-![alt text](./images/az-kv-vault-auto-unseal-no-click-ops.png)
+## Deploy Vault Cluster on K8s with Raft Backend using Helm Chart & Vault Auto Unseal with AZ Key Vault LLD
+
+![alt text](./images/auto-unseal-vault-k8s-lld.png)
+
+## Deploy Vault Auto Unseal with Azure KV LLD
+
+![alt text](./images/akv-lld.png)
