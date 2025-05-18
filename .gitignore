@@ -49,3 +49,5 @@ backend/terraform.tfstate
 backend/terraform.tfstate.backup
 
 vault-cluster-docker-compose/unseal-script/unseal-output.txt
+
+deploy-vault-cluster-on-k8s-with-helm/unseal.json
