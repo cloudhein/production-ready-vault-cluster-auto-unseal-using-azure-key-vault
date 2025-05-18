@@ -224,7 +224,7 @@ backend
     Seal Type                azurekeyvault
     Recovery Seal Type       shamir
     Initialized              true      <---- vault is already initialized 
-    Sealed                   false     <---- vault os sucessfully auto-unsealed by azure key vault
+    Sealed                   false     <---- vault is sucessfully auto-unsealed by azure key vault
     Total Recovery Shares    5
     Threshold                3
     Version                  1.19.0
@@ -265,9 +265,16 @@ backend
     vault-1    vault-1.vault-internal:8201    follower    true
     vault-2    vault-2.vault-internal:8201    follower    true 
     ```
-13. POC of *HA,Fault Tolerance & data persitence & synchronization across vault clusters*
+13. POC of *Vault-nodes auto-unseal if pods are resarted* and *HA,Fault Tolerance & data persitence & synchronization across vault clusters*
 
-    *For the sake of HA & Fault Tolerance, I delele the vault-0 nodes*
+    *For the sake of vault-nodes auto-unseal POC, I restarted the statefulset that manages the pods*
+    ```bash
+    kubectl rollout restart statefulset vault -n vault statefulset.apps/vault restarted
+    ```
+    *I check the vault-0 nodes to prove the auto-unseal with Azure KV after pods are restarted & you can see vault-0 is automatically unseal by AZ KV*
+    ![alt text](./images/auto-unseal.png)
+
+    *For the sake of HA & Fault Tolerance POC, I delele the vault-0 nodes*
     ```bash
     kubectl delete pod vault-0 -n vault
 
