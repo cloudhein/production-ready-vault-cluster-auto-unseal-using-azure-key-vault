@@ -23,3 +23,6 @@
   1. ***No manual intervention to unseal the vault server if one of the vault server is restarted or updated or scaled***
   2. ***Keys are securely managed by cloud KMS, reducing risk of leakage.***
   3. ***Avoids the need to distribute unseal keys among operator.***
+
+- **Using Terraform Remote Backend to securly store state files and secure state management**
+- **The entire Azure Key Vault infrastructure is fully automated and provisioned using Terraform, with no manual (clickops) intervention.**
