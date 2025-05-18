@@ -1,0 +1,58 @@
+server:
+  ha:
+    enabled: true
+    raft:
+      enabled: true
+      setNodeId: true
+    config: |
+      ui = true
+      cluster_name = "vault-integrated-storage"
+
+      storage "raft" {
+        path = "/vault/data/"
+        retry_join {
+          leader_api_addr = "https://vault-0.vault-internal:8200"
+          }
+        retry_join {
+          leader_api_addr = "http://vault-1.vault-internal:8200"
+          }
+        retry_join {
+          leader_api_addr = "http://vault-2.vault-internal:8200"
+          }
+      }
+
+      listener "tcp" {
+        address         = "[::]:8200"
+        cluster_address = "[::]:8201"
+        tls_disable     = "true"
+      }
+
+      service_registration "kubernetes" {}
+
+      # seal "azurekeyvault" {
+      #   tenant_id     = "your-tenant-id"
+      #   client_id     = "your-client-id"
+      #   client_secret = "your-client-secret"
+      #   vault_name    = "dev-vault-6277f0fc"
+      #   key_name      = "generated-key"
+      # }
+  extraEnvironmentVars:
+    #AZURE_TENANT_ID: xxxxxxxxxxxxxx
+    VAULT_AZUREKEYVAULT_VAULT_NAME: "dev-vault-6277f0fc"
+    VAULT_AZUREKEYVAULT_KEY_NAME: "generated-key"
+    VAULT_SEAL_TYPE: azurekeyvault
+  extraSecretEnvironmentVars:
+    - envName: AZURE_CLIENT_ID
+      secretName: azure-secrets
+      secretKey: client-id
+    - envName: AZURE_CLIENT_SECRET
+      secretName: azure-secrets
+      secretKey: client-secret
+    - envName: AZURE_TENANT_ID
+      secretName: azure-secrets
+      secretKey: tenant-id
+
+ui:
+  enabled: true
+  serviceType: ClusterIP
+  externalPort: 8200
