@@ -8,7 +8,7 @@
 
 ![alt text](./images/akv-lld.png)
 
-## This project highlights
+## 🚀This project highlights🚀
 
 - **Production ready vault cluster deployment on K8s with helm chart**
 - **Using helm chart helps vault cluster deployment**
